@@ -1,0 +1,13 @@
+<resources>
+  <!-- Default screen margins, per the Android Design guidelines. -->
+  <dimen name="activity_horizontal_margin">3dp</dimen>
+  <dimen name="activity_vertical_margin">3dp</dimen>
+
+  <dimen name="item_margin">1dp</dimen>
+  <dimen name="item_margin_half">1dp</dimen>
+
+  <dimen name="folder_column_width">120dp</dimen>
+
+  <dimen name="picture_column_width">90dp</dimen>
+
+</resources>
