@@ -8,10 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.androidcodeman.simpleimagegallery.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -19,15 +16,26 @@ import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
+/**
+ * Author CodeBoy722
+ *
+ * An adapter for populating RecyclerView with items representing folders that contain images
+ */
 public class pictureFolderAdapter extends RecyclerView.Adapter<pictureFolderAdapter.FolderHolder>{
 
-    public ArrayList<imageFolder> folders;
-    public Context foldaerContx;
-    public transitListerner listenToClick;
+    private ArrayList<imageFolder> folders;
+    private Context folderContx;
+    private transitListerner listenToClick;
 
-    public pictureFolderAdapter(ArrayList<imageFolder> folders, Context foldaerContx, transitListerner listen) {
+    /**
+     *
+     * @param folders An ArrayList of String that represents paths to folders on the external storage that contain pictures
+     * @param folderContx The Activity or fragment Context
+     * @param listen interFace for communication between adapter and fragment or activity
+     */
+    public pictureFolderAdapter(ArrayList<imageFolder> folders, Context folderContx, transitListerner listen) {
         this.folders = folders;
-        this.foldaerContx = foldaerContx;
+        this.folderContx = folderContx;
         this.listenToClick = listen;
     }
 
@@ -44,12 +52,13 @@ public class pictureFolderAdapter extends RecyclerView.Adapter<pictureFolderAdap
     public void onBindViewHolder(@NonNull FolderHolder holder, int position) {
         final imageFolder folder = folders.get(position);
 
-        Glide.with(foldaerContx)
+        Glide.with(folderContx)
                 .load(folder.getFirstPic())
                 .apply(new RequestOptions().centerCrop())
                 .into(holder.folderPic);
 
-        holder.folderName.setText("("+folder.getNumberOfPics()+") "+folder.getFolderName());
+        String text = "("+folder.getNumberOfPics()+") "+folder.getFolderName();
+        holder.folderName.setText(text);
 
         holder.folderPic.setOnClickListener(new View.OnClickListener() {
             @Override

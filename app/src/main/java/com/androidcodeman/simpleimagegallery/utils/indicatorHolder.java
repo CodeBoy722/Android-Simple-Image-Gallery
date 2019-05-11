@@ -7,13 +7,18 @@ import android.view.View;
 import android.widget.ImageView;
 import com.androidcodeman.simpleimagegallery.R;
 
+/**
+ * Author CodeBoy722
+ *
+ * recyclerViewPagerImageIndicator's ViewHolder
+ */
 public class indicatorHolder extends RecyclerView.ViewHolder{
 
     public ImageView image;
-    public CardView card;
-    public View positionController;
+    private CardView card;
+    View positionController;
 
-    public indicatorHolder(@NonNull View itemView) {
+    indicatorHolder(@NonNull View itemView) {
         super(itemView);
         image = itemView.findViewById(R.id.imageIndicator);
         card = itemView.findViewById(R.id.indicatorCard);

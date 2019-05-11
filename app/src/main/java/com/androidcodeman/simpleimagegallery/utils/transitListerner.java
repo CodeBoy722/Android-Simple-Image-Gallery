@@ -1,8 +1,10 @@
 package com.androidcodeman.simpleimagegallery.utils;
 
-
 import java.util.ArrayList;
 
+/**
+ * Author CodeBoy722
+ */
 public interface transitListerner {
 
     /**

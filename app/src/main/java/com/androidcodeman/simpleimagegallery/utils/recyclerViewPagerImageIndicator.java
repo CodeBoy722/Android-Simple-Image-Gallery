@@ -3,7 +3,6 @@ package com.androidcodeman.simpleimagegallery.utils;
 import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,13 +12,22 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import java.util.ArrayList;
 
+/**
+ * Author CodeBoy722
+ */
 public class recyclerViewPagerImageIndicator extends RecyclerView.Adapter<indicatorHolder> {
 
     ArrayList<pictureFacer> pictureList;
     Context pictureContx;
-    private final imageIndicatorListerner imageListerner;
+    private final imageIndicatorListener imageListerner;
 
-    public recyclerViewPagerImageIndicator(ArrayList<pictureFacer> pictureList, Context pictureContx, imageIndicatorListerner imageListerner) {
+    /**
+     *
+     * @param pictureList ArrayList of pictureFacer objects
+     * @param pictureContx The Activity of fragment context
+     * @param imageListerner Interface for communication between adapter and fragment
+     */
+    public recyclerViewPagerImageIndicator(ArrayList<pictureFacer> pictureList, Context pictureContx, imageIndicatorListener imageListerner) {
         this.pictureList = pictureList;
         this.pictureContx = pictureContx;
         this.imageListerner = imageListerner;

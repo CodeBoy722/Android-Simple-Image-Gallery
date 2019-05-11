@@ -3,11 +3,13 @@ package com.androidcodeman.simpleimagegallery.utils;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+/**
+ * Author CodeBoy722
+ * A custom RecyclerView with GridLayout AutoFit Behavior
+ */
 public class AutoFitRecyclerView extends RecyclerView {
 
     private int columnWidth = -1;
@@ -16,21 +18,26 @@ public class AutoFitRecyclerView extends RecyclerView {
 
     public AutoFitRecyclerView(Context context) {
         super(context);
-        init(context, null);
+        initialize(context, null);
     }
 
     public AutoFitRecyclerView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(context, attrs);
+        initialize(context, attrs);
     }
 
     public AutoFitRecyclerView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        init(context, attrs);
+        initialize(context, attrs);
     }
 
 
-    private void init(Context context, AttributeSet attrs) {
+    /**
+     *
+     * @param context The Activities Context
+     * @param attrs Dimention columnWidth of the RecyclerView
+     */
+    private void initialize(Context context, AttributeSet attrs) {
         if (attrs != null) {
             int[] attrsArray = {
                     android.R.attr.columnWidth

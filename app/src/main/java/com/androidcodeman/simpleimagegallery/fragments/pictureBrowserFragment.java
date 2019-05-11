@@ -17,7 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.androidcodeman.simpleimagegallery.R;
-import com.androidcodeman.simpleimagegallery.utils.imageIndicatorListerner;
+import com.androidcodeman.simpleimagegallery.utils.imageIndicatorListener;
 import com.androidcodeman.simpleimagegallery.utils.pictureFacer;
 import com.androidcodeman.simpleimagegallery.utils.recyclerViewPagerImageIndicator;
 import com.bumptech.glide.Glide;
@@ -28,13 +28,13 @@ import static androidx.core.view.ViewCompat.setTransitionName;
 
 
 /**
- * Author: Author CodeBoy722
+ * Author: CodeBoy722
  *
  * this fragment handles the browsing of all images in an ArrayList of pictureFacer passed in the constructor
  * the images are loaded in a ViewPager an a RecyclerView is used as a pager indicator for
  * each image in the ViewPager
  */
-public class pictureBrowserFragment extends Fragment implements imageIndicatorListerner {
+public class pictureBrowserFragment extends Fragment implements imageIndicatorListener {
 
     private  ArrayList<pictureFacer> allImages = new ArrayList<>();
     private int position;
@@ -88,7 +88,7 @@ public class pictureBrowserFragment extends Fragment implements imageIndicatorLi
         pagingImages = new ImagesPagerAdapter();
         imagePager.setAdapter(pagingImages);
         imagePager.setOffscreenPageLimit(3);
-        imagePager.setCurrentItem(position);//displaying the image at the current position passed by the MotherFragment
+        imagePager.setCurrentItem(position);//displaying the image at the current position passed by the ImageDisplay Activity
 
 
         /**
@@ -167,7 +167,7 @@ public class pictureBrowserFragment extends Fragment implements imageIndicatorLi
      * this method of the imageIndicatorListerner interface helps in communication between the fragment and the recyclerView Adapter
      * each time an iten in the adapter is clicked the position of that item is communicated in the fragment and the position of the
      * viewPager is adjusted as follows
-     * @param ImagePosition
+     * @param ImagePosition The position of an image item in the RecyclerView Adapter
      */
     @Override
     public void onImageIndicatorClicked(int ImagePosition) {

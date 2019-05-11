@@ -32,16 +32,21 @@ public class MainActivity extends AppCompatActivity implements transitListerner 
     private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 1;
 
 
-
+    /**
+     * Request the user for permission to access media files and read images on the device
+     * this will be useful as from api 21 and above, if this check is not done the Activity will crash
+     *
+     * Setting up the RecyclerView and getting all folders that contain pictures from the device
+     * the getPicturePaths() returns an ArrayList of imageFolder objects that is then used to
+     * create a RecyclerView Adapter that is set to the RecyclerView
+     *
+     * @param savedInstanceState saving the activity state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /**
-         * The below code request the user for permission to access media files and read images on the device
-         * this will be useful as from api 21 and above, if this check is not done the will always crash
-         */
         if(ContextCompat.checkSelfPermission(MainActivity.this,
                 Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED)
@@ -50,11 +55,6 @@ public class MainActivity extends AppCompatActivity implements transitListerner 
                     MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
         //____________________________________________________________________________________
 
-        /**
-         * Setting up the RecyclerView and getting all folders that contain pictures from the device
-         * the getPicturePaths() returns an ArrayList of imageFolder objects that is then used to
-         * create a RecyclerView Adapter that is set to the RecyclerView
-         */
         folderRecycler = findViewById(R.id.folderRecycler);
         folderRecycler.addItemDecoration(new MarginDecoration(this));
         folderRecycler.hasFixedSize();
@@ -65,9 +65,9 @@ public class MainActivity extends AppCompatActivity implements transitListerner 
     }
 
     /**
+     * @return
      * gets all folders with pictures on the device and loads each of them in a custom object imageFolder
      * the returns an ArrayList of these custom objects
-     * @return
      */
     private ArrayList<imageFolder> getPicturePaths(){
         ArrayList<imageFolder> picFolders = new ArrayList<>();
@@ -77,7 +77,9 @@ public class MainActivity extends AppCompatActivity implements transitListerner 
                 MediaStore.Images.Media.BUCKET_DISPLAY_NAME,MediaStore.Images.Media.BUCKET_ID};
         Cursor cursor = this.getContentResolver().query(allImagesuri, projection, null, null, null);
         try {
-            cursor.moveToFirst();
+            if (cursor != null) {
+                cursor.moveToFirst();
+            }
             do{
                 imageFolder folds = new imageFolder();
                 String name = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DISPLAY_NAME));
@@ -124,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements transitListerner 
      * Each time an item in the RecyclerView is clicked this method from the implementation of the transitListerner
      * in this activity is executed, this is possible because this class is passed as a parameter in the creation
      * of the RecyclerView's Adapter, see the adapter class to understand better what is happening here
-     * @param pictureFolderPath
+     * @param pictureFolderPath a String corresponding to a folder path on the device external storage
      */
     @Override
     public void onPicClicked(String pictureFolderPath) {

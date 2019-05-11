@@ -8,14 +8,16 @@ import com.androidcodeman.simpleimagegallery.R;
 
 
 /**
+ *Author CodeBoy722
  *
+ * picture_Adapter's ViewHolder
  */
 
 public class PicHolder extends RecyclerView.ViewHolder{
 
     public ImageView picture;
 
-    public PicHolder(@NonNull View itemView) {
+    PicHolder(@NonNull View itemView) {
         super(itemView);
 
         picture = itemView.findViewById(R.id.image);
