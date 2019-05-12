@@ -7,21 +7,50 @@
     tools:context=".ImageDisplay"
     android:id="@+id/displayContainer">
 
-    <com.androidcodeman.simpleimagegallery.utils.AutoFitRecyclerView
-        android:id="@+id/recycler"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        android:columnWidth="@dimen/picture_column_width">
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/head"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:cardBackgroundColor="@color/skyblue">
+
+            <TextView
+                android:id="@+id/foldername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:text="@string/folderName"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp" />
+
+        </androidx.cardview.widget.CardView>
+
+        <com.androidcodeman.simpleimagegallery.utils.AutoFitRecyclerView
+            android:layout_below="@id/head"
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:columnWidth="@dimen/picture_column_width">
 
 
-        <!--app:fastScrollEnabled="true"
-        app:fastScrollHorizontalThumbDrawable="@drawable/thumb_drawable"
-        app:fastScrollHorizontalTrackDrawable="@drawable/line_drawable"
-        app:fastScrollVerticalThumbDrawable="@drawable/thumb_drawable"
-        app:fastScrollVerticalTrackDrawable="@drawable/line_drawable"-->
+            <!--app:fastScrollEnabled="true"
+            app:fastScrollHorizontalThumbDrawable="@drawable/thumb_drawable"
+            app:fastScrollHorizontalTrackDrawable="@drawable/line_drawable"
+            app:fastScrollVerticalThumbDrawable="@drawable/thumb_drawable"
+            app:fastScrollVerticalTrackDrawable="@drawable/line_drawable"-->
 
-    </com.androidcodeman.simpleimagegallery.utils.AutoFitRecyclerView>
+        </com.androidcodeman.simpleimagegallery.utils.AutoFitRecyclerView>
+
+    </RelativeLayout>
+
+
 
     <ProgressBar
         android:id="@+id/loader"

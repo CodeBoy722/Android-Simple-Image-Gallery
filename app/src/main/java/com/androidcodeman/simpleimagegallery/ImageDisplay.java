@@ -5,18 +5,18 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import android.transition.Fade;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import com.androidcodeman.simpleimagegallery.fragments.pictureBrowserFragment;
 import com.androidcodeman.simpleimagegallery.utils.MarginDecoration;
 import com.androidcodeman.simpleimagegallery.utils.PicHolder;
+import com.androidcodeman.simpleimagegallery.utils.itemClickListener;
 import com.androidcodeman.simpleimagegallery.utils.pictureFacer;
 import com.androidcodeman.simpleimagegallery.utils.picture_Adapter;
-import com.androidcodeman.simpleimagegallery.utils.transitListerner;
 import java.util.ArrayList;
 
 /**
@@ -26,17 +26,21 @@ import java.util.ArrayList;
  * all the images in the folder inside a RecyclerView
  */
 
-public class ImageDisplay extends AppCompatActivity implements transitListerner {
+public class ImageDisplay extends AppCompatActivity implements itemClickListener {
 
     RecyclerView imageRecycler;
     ArrayList<pictureFacer> allpictures;
     ProgressBar load;
     String foldePath;
+    TextView folderName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_display);
+
+        folderName = findViewById(R.id.foldername);
+        folderName.setText(getIntent().getStringExtra("folderName"));
 
         foldePath =  getIntent().getStringExtra("folderPath");
         allpictures = new ArrayList<>();
@@ -87,7 +91,7 @@ public class ImageDisplay extends AppCompatActivity implements transitListerner 
     }
 
     @Override
-    public void onPicClicked(String pictureFolderPath) {
+    public void onPicClicked(String pictureFolderPath,String folderName) {
 
     }
 

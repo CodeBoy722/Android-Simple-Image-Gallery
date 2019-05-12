@@ -13,5 +13,5 @@ public interface itemClickListener {
      * @param position The position in the grid of the picture that was clicked
      */
     void onPicClicked(PicHolder holder, int position, ArrayList<pictureFacer> pics);
-    void onPicClicked(String pictureFolderPath);
+    void onPicClicked(String pictureFolderPath,String folderName);
 }

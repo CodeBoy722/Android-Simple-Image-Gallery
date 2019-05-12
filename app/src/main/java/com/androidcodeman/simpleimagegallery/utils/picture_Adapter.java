@@ -25,7 +25,7 @@ public class picture_Adapter extends RecyclerView.Adapter<PicHolder> {
 
     private ArrayList<pictureFacer> pictureList;
     private Context pictureContx;
-    private final transitListerner picListerner;
+    private final itemClickListener picListerner;
 
     /**
      *
@@ -33,7 +33,7 @@ public class picture_Adapter extends RecyclerView.Adapter<PicHolder> {
      * @param pictureContx The Activities Context
      * @param picListerner An interface for listening to clicks on the RecyclerView's items
      */
-    public picture_Adapter(ArrayList<pictureFacer> pictureList, Context pictureContx,transitListerner picListerner) {
+    public picture_Adapter(ArrayList<pictureFacer> pictureList, Context pictureContx,itemClickListener picListerner) {
         this.pictureList = pictureList;
         this.pictureContx = pictureContx;
         this.picListerner = picListerner;

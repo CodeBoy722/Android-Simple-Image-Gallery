@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,56 +7,73 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+
     <RelativeLayout
-        android:id="@+id/head"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.9"
-        android:background="@color/skyblue">
+        android:layout_height="match_parent">
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:text="Simple Image Gallery"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/head"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:cardBackgroundColor="@color/skyblue">
 
 
-        <ImageButton
-            android:id="@+id/menu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_action_menu"
-            android:tint="@color/white"
-            android:layout_marginRight="10dp"
-            android:layout_marginEnd="10dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:text="@string/appName"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp" />
+
+
+            <ImageButton
+                android:id="@+id/menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|end"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_action_menu"
+                android:tint="@color/white" />
+
+
+        </androidx.cardview.widget.CardView>
+
+        <com.androidcodeman.simpleimagegallery.utils.AutoFitRecyclerView
+            android:id="@+id/folderRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:columnWidth="@dimen/folder_column_width"
+            android:clipToPadding="false"
+            android:layout_below="@id/head">
+
+            <!--app:fastScrollEnabled="true"
+       app:fastScrollHorizontalThumbDrawable="@drawable/thumb_drawable"
+       app:fastScrollHorizontalTrackDrawable="@drawable/line_drawable"
+       app:fastScrollVerticalThumbDrawable="@drawable/thumb_drawable"
+       app:fastScrollVerticalTrackDrawable="@drawable/line_drawable"-->
+
+        </com.androidcodeman.simpleimagegallery.utils.AutoFitRecyclerView>
 
     </RelativeLayout>
 
-    <com.androidcodeman.simpleimagegallery.utils.AutoFitRecyclerView
-        android:id="@+id/folderRecycler"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="9.1"
-        android:background="@color/white"
-        android:columnWidth="@dimen/folder_column_width"
-        android:clipToPadding="false">
 
-        <!--app:fastScrollEnabled="true"
-   app:fastScrollHorizontalThumbDrawable="@drawable/thumb_drawable"
-   app:fastScrollHorizontalTrackDrawable="@drawable/line_drawable"
-   app:fastScrollVerticalThumbDrawable="@drawable/thumb_drawable"
-   app:fastScrollVerticalTrackDrawable="@drawable/line_drawable"-->
+    <TextView
+        android:id="@+id/empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/empty"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
 
-    </com.androidcodeman.simpleimagegallery.utils.AutoFitRecyclerView>
-
-</LinearLayout>
+</FrameLayout>

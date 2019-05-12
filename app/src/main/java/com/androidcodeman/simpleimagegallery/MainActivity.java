@@ -12,6 +12,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
+
 import com.androidcodeman.simpleimagegallery.utils.MarginDecoration;
 import com.androidcodeman.simpleimagegallery.utils.PicHolder;
 import com.androidcodeman.simpleimagegallery.utils.imageFolder;
@@ -29,8 +32,8 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements itemClickListener {
 
     RecyclerView folderRecycler;
+    TextView empty;
     private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 1;
-
 
     /**
      * Request the user for permission to access media files and read images on the device
@@ -55,13 +58,19 @@ public class MainActivity extends AppCompatActivity implements itemClickListener
                     MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
         //____________________________________________________________________________________
 
+        empty =findViewById(R.id.empty);
+
         folderRecycler = findViewById(R.id.folderRecycler);
         folderRecycler.addItemDecoration(new MarginDecoration(this));
         folderRecycler.hasFixedSize();
         ArrayList<imageFolder> folds = getPicturePaths();
-        RecyclerView.Adapter folderAdapter = new pictureFolderAdapter(folds,MainActivity.this,this);
-        folderRecycler.setAdapter(folderAdapter);
 
+        if(folds.isEmpty()){
+            empty.setVisibility(View.VISIBLE);
+        }else{
+            RecyclerView.Adapter folderAdapter = new pictureFolderAdapter(folds,MainActivity.this,this);
+            folderRecycler.setAdapter(folderAdapter);
+        }
     }
 
     /**
@@ -129,9 +138,11 @@ public class MainActivity extends AppCompatActivity implements itemClickListener
      * @param pictureFolderPath a String corresponding to a folder path on the device external storage
      */
     @Override
-    public void onPicClicked(String pictureFolderPath) {
+    public void onPicClicked(String pictureFolderPath,String folderName) {
         Intent move = new Intent(MainActivity.this,ImageDisplay.class);
         move.putExtra("folderPath",pictureFolderPath);
+        move.putExtra("folderName",folderName);
+
         //move.putExtra("recyclerItemSize",getCardsOptimalWidth(4));
         startActivity(move);
     }
