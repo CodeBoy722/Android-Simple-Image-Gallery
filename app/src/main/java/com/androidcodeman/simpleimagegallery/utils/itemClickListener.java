@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Author CodeBoy722
  */
-public interface transitListerner {
+public interface itemClickListener {
 
     /**
      * Called when a picture is clicked

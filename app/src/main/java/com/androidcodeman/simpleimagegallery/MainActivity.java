@@ -15,9 +15,9 @@ import android.util.Log;
 import com.androidcodeman.simpleimagegallery.utils.MarginDecoration;
 import com.androidcodeman.simpleimagegallery.utils.PicHolder;
 import com.androidcodeman.simpleimagegallery.utils.imageFolder;
+import com.androidcodeman.simpleimagegallery.utils.itemClickListener;
 import com.androidcodeman.simpleimagegallery.utils.pictureFacer;
 import com.androidcodeman.simpleimagegallery.utils.pictureFolderAdapter;
-import com.androidcodeman.simpleimagegallery.utils.transitListerner;
 import java.util.ArrayList;
 
 /**
@@ -26,7 +26,7 @@ import java.util.ArrayList;
  * The main Activity start and loads all folders containing images in a RecyclerView
  * this folders are gotten from the MediaStore by the Method getPicturePaths()
  */
-public class MainActivity extends AppCompatActivity implements transitListerner {
+public class MainActivity extends AppCompatActivity implements itemClickListener {
 
     RecyclerView folderRecycler;
     private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 1;

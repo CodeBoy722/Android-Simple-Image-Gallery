@@ -12,8 +12,6 @@ import android.widget.TextView;
 import com.androidcodeman.simpleimagegallery.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-
-
 import java.util.ArrayList;
 
 /**
@@ -25,7 +23,7 @@ public class pictureFolderAdapter extends RecyclerView.Adapter<pictureFolderAdap
 
     private ArrayList<imageFolder> folders;
     private Context folderContx;
-    private transitListerner listenToClick;
+    private itemClickListener listenToClick;
 
     /**
      *
@@ -33,7 +31,7 @@ public class pictureFolderAdapter extends RecyclerView.Adapter<pictureFolderAdap
      * @param folderContx The Activity or fragment Context
      * @param listen interFace for communication between adapter and fragment or activity
      */
-    public pictureFolderAdapter(ArrayList<imageFolder> folders, Context folderContx, transitListerner listen) {
+    public pictureFolderAdapter(ArrayList<imageFolder> folders, Context folderContx, itemClickListener listen) {
         this.folders = folders;
         this.folderContx = folderContx;
         this.listenToClick = listen;
