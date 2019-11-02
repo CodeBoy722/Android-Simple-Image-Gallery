@@ -133,7 +133,6 @@ public class pictureBrowserFragment extends Fragment implements imageIndicatorLi
                     indicatorRecycler.getAdapter().notifyDataSetChanged();
                     indicatorRecycler.scrollToPosition(position);
                 }
-
             }
 
             @Override
