@@ -13,7 +13,7 @@ Displays all images in a given folder, in this case "FastSave" <br />
 Image slider/navigator <br />
 ![](https://cdn-images-1.medium.com/max/800/1*PHx4xIYzq4Jom9pNAx36yw.jpeg) 
 
-### [Read the article on Medium](https://medium.com/@moforemmanuel/android-simple-image-gallery-30c0f00abe64)
+### [Read the article on Medium](https://android.jlelse.eu/android-simple-image-gallery-30c0f00abe64?source=friends_link&sk=c203004612a1f0d402db9084feca42d4)
 
 
 
