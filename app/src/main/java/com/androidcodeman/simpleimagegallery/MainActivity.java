@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements itemClickListener
      *
      * @param savedInstanceState saving the activity state
      */
-     //   @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements itemClickListener
             folderRecycler.setAdapter(folderAdapter);
         }
 
-  //      changeStatusBarColor();
+        changeStatusBarColor();
     }
 
     /**1
