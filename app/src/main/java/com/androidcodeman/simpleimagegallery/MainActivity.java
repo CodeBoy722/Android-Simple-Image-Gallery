@@ -5,7 +5,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.MediaStore;
+
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.core.app.ActivityCompat;
@@ -13,6 +16,8 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.androidcodeman.simpleimagegallery.utils.MarginDecoration;
@@ -45,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements itemClickListener
      *
      * @param savedInstanceState saving the activity state
      */
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,9 +77,11 @@ public class MainActivity extends AppCompatActivity implements itemClickListener
             RecyclerView.Adapter folderAdapter = new pictureFolderAdapter(folds,MainActivity.this,this);
             folderRecycler.setAdapter(folderAdapter);
         }
+
+        changeStatusBarColor();
     }
 
-    /**
+    /**1
      * @return
      * gets all folders with pictures on the device and loads each of them in a custom object imageFolder
      * the returns an ArrayList of these custom objects
@@ -156,20 +164,17 @@ public class MainActivity extends AppCompatActivity implements itemClickListener
     }
 
 
-   /* public int getCardsOptimalWidth(int numberOfRows){
-        Configuration configuration = MainActivity.this.getResources().getConfiguration();
-        int screenWidthDp = configuration.screenWidthDp; //The current width of the available screen space, in dp units, corresponding to screen width resource qualifier.
-        int smallestScreenWidthDp = configuration.smallestScreenWidthDp; //The smallest screen size an application will see in normal operation, corresponding to smallest screen width resource qualifier.
-        int each = screenWidthDp / numberOfRows;
+    /**
+     * Default status bar height 24dp,with code API level 24
+     */
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private void changeStatusBarColor()
+    {
+        Window window = this.getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(ContextCompat.getColor(getApplicationContext(),R.color.black));
 
-        return each;
-    }*/
-
-   /* private int dpToPx(int dp) {
-        float density = MainActivity.this.getResources()
-                .getDisplayMetrics()
-                .density;
-        return Math.round((float) dp * density);
-    }*/
+    }
 
 }
