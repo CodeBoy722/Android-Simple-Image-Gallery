@@ -1,4 +1,4 @@
-# Android-Simple-Image-Gallery
+# Android-Simple-Image-Gallery!
 A simple implementation of an image gallery app in android
 
 MainActivity displays all folders with images and the number of images it contains <br />
